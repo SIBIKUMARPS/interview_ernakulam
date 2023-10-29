@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:interview_geofencing/views/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,11 +20,8 @@ class LoginScreenProvider extends ChangeNotifier {
     if (usernameController.text == "sibi" && passwordController.text == "1234"){
           SharedPreferences pref = await SharedPreferences.getInstance();
             pref.setString('token', "token");
-             Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const HomeScreen()),
-                                );
+
+             context.go('/home');
     }
     else{
      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

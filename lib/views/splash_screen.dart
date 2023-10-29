@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:interview_geofencing/views/home_screen.dart';
 import 'package:interview_geofencing/views/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,19 +32,24 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-void checklogin(context) async {
+void checklogin(BuildContext context) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   await Future.delayed(const Duration(seconds: 2));
   String? token = preferences.getString('token');
   if (token == null) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
-    );
+    context.go('/login');
+    
+
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => const LoginScreen()),
+    // );
   } else {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
-    );
+
+    context.go('/home');
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => const HomeScreen()),
+    // );
   }
 }

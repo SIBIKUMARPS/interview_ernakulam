@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:interview_geofencing/controllers/providers/home_screen_provider.dart';
 import 'package:interview_geofencing/controllers/providers/login_screen_provider.dart';
+import 'package:interview_geofencing/views/home_screen.dart';
+import 'package:interview_geofencing/views/login_screen.dart';
 import 'package:interview_geofencing/views/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +23,14 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) =>const SplashScreen(),
+    ),
+     GoRoute(
+      path: '/home',
+      builder: (context, state) =>const HomeScreen(),
+    ),
+     GoRoute(
+      path: '/login',
+      builder: (context, state) =>const LoginScreen(),
     ),
      
   ],
