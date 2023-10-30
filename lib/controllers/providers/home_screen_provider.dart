@@ -24,7 +24,7 @@ class HomeScreenProvider extends ChangeNotifier {
     EasyGeofencing.startGeofenceService(
         pointedLatitude: "10.010092",
         pointedLongitude: "76.336313",
-        radiusMeter: "14418472.262240112",
+        radiusMeter: "200",
         eventPeriodInSeconds: 5);
 
     StreamSubscription<GeofenceStatus> geofenceStatusStream =
