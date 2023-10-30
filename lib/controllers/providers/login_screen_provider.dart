@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
-import 'package:interview_geofencing/views/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreenProvider extends ChangeNotifier {

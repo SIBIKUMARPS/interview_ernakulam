@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:interview_geofencing/controllers/providers/home_screen_provider.dart';
@@ -13,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -49,8 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Consumer<HomeScreenProvider>(builder: (context, pro, value) {
             return GestureDetector(
                 onTap: () {
-                  pro.getLocation();
-                  // pro.stopGeofencing();
+                    if (pro.status == false) {
+                    pro.getLocation();
+                  } else {
+                    pro.stopFencing();
+                  }
+                  pro.statusChange(pro.status);
                 },
                 child: Container(
                   width: 200,
@@ -69,10 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         : const Color.fromARGB(255, 183, 85, 60)
                             .withOpacity(0.9),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      "START",
-                      style: TextStyle(
+                      pro.status == false ? "START" : "STOP",
+                      style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
